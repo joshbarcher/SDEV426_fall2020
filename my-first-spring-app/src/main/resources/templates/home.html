@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>My Home Page</title>
@@ -7,5 +7,11 @@
     <body>
         <h1>Welcome to my page!</h1>
         <p>Enjoy your stay!</p>
+
+        <ul>
+            <li th:each="pizza : ${pizzas}">A
+                <span th:text="${pizza.toppings}"></span>
+                pizza!</li>
+        </ul>
     </body>
 </html>
