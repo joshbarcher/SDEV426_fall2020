@@ -2,6 +2,8 @@ package streams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class FunWithLambdas
@@ -25,5 +27,31 @@ public class FunWithLambdas
         nums.stream()
             .map(NumberHolder::new)
             .forEach(nh -> nh.printMe()); //we now have 5 NumberHolders
+
+        String[] names = {"Steve", "Bob", "Melvin", "Maybell", "Susie", "Melanie"};
+
+        List<String> namesList = Arrays.stream(names)
+            .sorted()
+            .filter(name -> !name.startsWith("M"))
+            .collect(Collectors.toList());
+
+        namesList.stream()
+            .forEach(System.out::println);
+
+        OptionalInt result = Arrays.stream(new int[] {1, 2, 3, 4, 5})
+            .reduce((a, b) -> a + b);
+
+        if (result.isPresent())
+        {
+            System.out.println(result.getAsInt());
+        }
     }
 }
+
+
+
+
+
+
+
+
