@@ -19,6 +19,20 @@ public class Dog extends Animal
         name = "Biscuit";
     }
 
+    public Dog(String nickname, String name)
+    {
+
+    }
+
+    public Dog(String tailType, String breed, String name)
+    {
+        super();
+
+        this.tailType = tailType;
+        this.breed = breed;
+        this.name = name;
+    }
+
     //methods
     public String getTailType()
     {

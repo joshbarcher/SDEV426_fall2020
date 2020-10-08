@@ -6,8 +6,7 @@ public class Apple extends Fruit
 
     public Apple(double value, String type)
     {
-        super(value);
-
+        super();
         this.type = type;
     }
 
