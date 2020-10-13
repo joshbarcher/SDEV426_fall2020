@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>All Baking Tips</title>
+    </head>
+    <body>
+        <h1>All Baking Tips</h1>
+        <table>
+            <thead><tr>Tip</tr></thead>
+            <tbody>
+                <tr th:each="tip : ${tips}">
+                    <td th:text="${tip}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
