@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Highlighted Product for the Week</title>
+    </head>
+    <body>
+        <h1>Highlight!</h1>
+        <p th:text="${product.name}">Name</p>
+        <p th:text="${product.description}">Description</p>
+        <p th:text="'$' + ${product.price}">Price</p>
+        <p th:text="${sale_status}">On Sale?</p>
+        <hr>
+
+        <h1>Products</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>On sale?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}">Name</td>
+                    <td th:text="${product.description}">Description</td>
+                    <td th:text="${product.price}">Price</td>
+                    <td th:text="${product.onSale.toString()}">On sale?</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
