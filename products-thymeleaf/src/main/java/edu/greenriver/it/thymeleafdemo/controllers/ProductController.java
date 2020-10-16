@@ -31,11 +31,22 @@ public class ProductController
     @RequestMapping("highlighted")
     public String highlighted(Model model)
     {
-        model.addAttribute("product", fakeProducts[1]);
-        model.addAttribute("sale_status", fakeProducts[1].getOnSale().toString());
+        Product product = new Product(
+            "fishing pole", 79.99,
+            "A must have for any angler.",
+            Sale.ON_SALE
+        );
+        model.addAttribute("product", product);
+        model.addAttribute("sale_status", product.getOnSale().toString());
         model.addAttribute("products", fakeProducts);
 
         return "highlighted";
+    }
+
+    @RequestMapping("add")
+    public String addProduct()
+    {
+        return "add_products_form";
     }
 }
 

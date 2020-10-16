@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="fragments/parts :: head('Products')">
         <meta charset="UTF-8">
-        <title>Highlighted Product for the Week</title>
+        <title></title>
     </head>
     <body>
+        <header th:replace="fragments/parts :: top"></header>
+
         <h1>Highlight!</h1>
         <p th:text="${product.name}">Name</p>
         <p th:text="${product.description}">Description</p>
@@ -13,7 +15,7 @@
         <hr>
 
         <h1>Products</h1>
-        <table>
+        <table th:if="${products.length != 0}">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -31,5 +33,8 @@
                 </tr>
             </tbody>
         </table>
+        <p th:if="${products.length == 0}">There are no products available</p>
+
+        <footer th:replace="fragments/parts :: bottom"></footer>
     </body>
 </html>

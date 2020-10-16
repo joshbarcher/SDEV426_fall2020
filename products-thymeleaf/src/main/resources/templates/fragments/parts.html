@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head(title)">
+        <meta charset="UTF-8">
+        <title th:text="${title}"></title>
+        <link href="/css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header th:fragment="top">
+            <h1>Welcome to my Page!</h1>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Links</a>
+        </header>
+
+        <footer th:fragment="bottom">
+            <p>Thanks for stopping by!</p>
+        </footer>
+    </body>
+</html>
