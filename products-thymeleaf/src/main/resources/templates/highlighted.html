@@ -22,6 +22,7 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>On sale?</th>
+                    <th>View Product</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
                     <td th:text="${product.description}">Description</td>
                     <td th:text="${product.price}">Price</td>
                     <td th:text="${product.onSale.toString()}">On sale?</td>
+                    <td><a th:href="@{'/products/' + ${product.name}}">view</a></td>
                 </tr>
             </tbody>
         </table>

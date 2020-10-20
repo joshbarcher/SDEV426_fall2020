@@ -4,8 +4,7 @@ import edu.greenriver.it.thymeleafdemo.model.Product;
 import edu.greenriver.it.thymeleafdemo.model.Sale;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("products")
@@ -52,10 +51,23 @@ public class ProductController
         return "product_by_id";
     }
 
-    @RequestMapping("add")
-    public String addProduct()
+    @GetMapping("add")
+    public String addProductForm(Model model)
     {
+        model.addAttribute("product", new Product());
         return "add_products_form";
+    }
+
+    @PostMapping("add")
+    public String handleProductForm(@ModelAttribute Product product,
+                                    Model model)
+    {
+        //save to db, log it, etc...
+        System.out.println(product);
+
+        //save the new product and show it on the product by id page
+        model.addAttribute("product", product);
+        return "product_by_id";
     }
 
     private Product getProductByName(String name)

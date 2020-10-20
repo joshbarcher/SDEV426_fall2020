@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="fragments/parts :: head('Product By Name')">
         <meta charset="UTF-8">
-        <title>Product By Id</title>
+        <title>Product By Name</title>
     </head>
     <body>
+        <div th:replace="fragments/parts :: top"></div>
+
         <h1>Product</h1>
         <p th:text="'Name: ' + ${product.name}"></p>
         <p th:text="'Price: ' + ${product.price}"></p>
         <p th:text="'Description: ' + ${product.description}"></p>
+
+        <div th:replace="fragments/parts :: bottom"></div>
     </body>
 </html>
