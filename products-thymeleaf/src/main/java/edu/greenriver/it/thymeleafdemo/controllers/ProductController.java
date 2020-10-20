@@ -4,6 +4,7 @@ import edu.greenriver.it.thymeleafdemo.model.Product;
 import edu.greenriver.it.thymeleafdemo.model.Sale;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,7 +23,7 @@ public class ProductController
             Sale.ONE_TIME_ONLY
         ),
         new Product(
-            "Refrigerator magnets", 1.99,
+            "refrigerator magnets", 1.99,
             "A 5 pack of magnets for the fridge.",
             Sale.NO_SALE
         )
@@ -43,10 +44,30 @@ public class ProductController
         return "highlighted";
     }
 
+    @RequestMapping("{name}")
+    public String productByName(@PathVariable String name, Model model)
+    {
+        model.addAttribute("product", getProductByName(name));
+
+        return "product_by_id";
+    }
+
     @RequestMapping("add")
     public String addProduct()
     {
         return "add_products_form";
+    }
+
+    private Product getProductByName(String name)
+    {
+        for (Product product : fakeProducts)
+        {
+            if (product.getName().equals(name))
+            {
+                return product;
+            }
+        }
+        return null;
     }
 }
 
