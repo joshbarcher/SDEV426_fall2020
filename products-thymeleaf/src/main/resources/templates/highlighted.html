@@ -15,7 +15,7 @@
         <hr>
 
         <h1>Products</h1>
-        <table th:if="${products.length != 0}">
+        <table th:if="${products.size() != 0}">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -30,12 +30,13 @@
                     <td th:text="${product.name}">Name</td>
                     <td th:text="${product.description}">Description</td>
                     <td th:text="${product.price}">Price</td>
-                    <td th:text="${product.onSale.toString()}">On sale?</td>
+                    <td th:text="${product.onSale}">On sale?</td>
                     <td><a th:href="@{'/products/' + ${product.name}}">view</a></td>
                 </tr>
             </tbody>
         </table>
-        <p th:if="${products.length == 0}">There are no products available</p>
+        <p th:if="${products.size() == 0}">There are no products available</p>
+        <a th:href="@{/products/add}">Add a New Product!</a>
 
         <footer th:replace="fragments/parts :: bottom"></footer>
     </body>

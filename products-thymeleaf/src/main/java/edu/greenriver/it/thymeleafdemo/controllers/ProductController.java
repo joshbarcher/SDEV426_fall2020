@@ -6,11 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("products")
 public class ProductController
 {
-    private Product[] fakeProducts = {
+    /*private Product[] fakeProducts = {
         new Product(
             "fishing pole", 79.99,
             "A must have for any angler.",
@@ -26,7 +29,9 @@ public class ProductController
             "A 5 pack of magnets for the fridge.",
             Sale.NO_SALE
         )
-    };
+    };*/
+
+    private List<Product> fakeProducts = new ArrayList<>();
 
     @RequestMapping("highlighted")
     public String highlighted(Model model)
@@ -63,11 +68,9 @@ public class ProductController
                                     Model model)
     {
         //save to db, log it, etc...
-        System.out.println(product);
+        fakeProducts.add(product);
 
-        //save the new product and show it on the product by id page
-        model.addAttribute("product", product);
-        return "product_by_id";
+        return "redirect:highlighted";
     }
 
     private Product getProductByName(String name)
