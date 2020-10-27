@@ -3,6 +3,9 @@ package driver;
 import entities.Document;
 import entities.Runner;
 import race.Race;
+import race.RaceWithRewards;
+import strategies.race_types.RaceType10K;
+import strategies.race_types.RaceType5K;
 import strategies.registrations.FallRegistration;
 import strategies.registrations.FreeForAllRegistration;
 import strategies.registrations.SimpleFallRegistration;
@@ -45,11 +48,16 @@ public class TestClasses
         Race ironManRace = new Race("Iron Man",
                 LocalDate.of(2021, 1, 7), new WinterRegistration());
 
+        RaceWithRewards balloonRace = new RaceWithRewards(
+                "National Balloon Day Race", LocalDate.now(),
+                new SimpleFallRegistration(), new RaceType10K());
+
         //add the runners to each race
         Arrays.stream(runners).forEach(fallRace::addRunner);
         Arrays.stream(runners).forEach(anotherRace::addRunner);
         Arrays.stream(runners).forEach(ironManRace::addRunner);
         Arrays.stream(runners).forEach(winterRace::addRunner);
+        Arrays.stream(runners).forEach(balloonRace::addRunner);
 
         //simulate the race day for each race
         anotherRace.raceDay();
@@ -62,6 +70,9 @@ public class TestClasses
         System.out.println();
 
         winterRace.raceDay();
+        System.out.println();
+
+        balloonRace.raceDay();
         System.out.println();
     }
 }
