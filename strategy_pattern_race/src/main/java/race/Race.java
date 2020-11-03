@@ -2,6 +2,7 @@ package race;
 
 import entities.Runner;
 import lombok.Data;
+import strategies.race_types.IRaceType;
 import strategies.registrations.IRegistrationProcess;
 
 import java.time.LocalDate;
