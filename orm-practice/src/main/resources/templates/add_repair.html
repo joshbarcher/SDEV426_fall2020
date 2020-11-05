@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add New Repair</title>
+    </head>
+    <body>
+        <h1>Add New Repair</h1>
+        <form th:object="${repair}" th:action="@{/repair/add}" method="post">
+            <div>
+                <label for="instrument">Instrument</label>
+                <input id="instrument" name="instrument" type="text"
+                       th:field="*{instrument}">
+            </div>
+            <div>
+                <label for="cost">Cost</label>
+                <input id="cost" name="cost" type="number"
+                       th:field="*{cost}">
+            </div>
+            <div>
+                <label for="dateAdded">Date Added</label>
+                <input id="dateAdded" name="dateAdded" type="date"
+                       th:field="*{dateAdded}">
+            </div>
+            <div>
+                <label for="completed">Completed?</label>
+                <input id="completed" name="completed" type="text"
+                       th:field="*{completed}">
+            </div>
+
+            <button type="submit">Add Repair</button>
+        </form>
+    </body>
+</html>

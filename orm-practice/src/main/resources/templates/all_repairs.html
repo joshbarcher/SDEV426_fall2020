@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>All Instrument Repairs</title>
+    </head>
+    <body>
+        <h1>Repairs</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date Added</th>
+                    <th>Instrument</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="repair : ${repairs}">
+                    <td th:text="${repair.dateAdded}"></td>
+                    <td th:text="${repair.instrument}"></td>
+                    <td th:text="${repair.completed}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -23,18 +23,22 @@ public class OrmPracticeApplication
         Repair fluteRepair = Repair.builder()
             .instrument("flute")
             .cost(50.0)
-            .fixedDate(LocalDate.now().toString())
+            .dateAdded(LocalDate.now().toString())
             .completed(true)
             .build();
 
         Repair clarinetRepair = Repair.builder()
             .instrument("clarinet")
             .cost(20.0)
-            .fixedDate(LocalDate.of(2020, 10, 25).toString())
+            .dateAdded(LocalDate.of(2020, 10, 25).toString())
             .completed(true)
             .build();
 
-        List<Repair> repairs = List.of(fluteRepair, clarinetRepair);
+        Repair repair = Repair.builder()
+                .instrument("trombone")
+                .build();
+
+        List<Repair> repairs = List.of(fluteRepair, clarinetRepair, repair);
 
         //convert (save) objects as managed objects using JPA
         repo.saveAll(repairs);

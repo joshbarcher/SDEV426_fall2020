@@ -23,8 +23,8 @@ public class Repair
     private String instrument;
     @Column(name = "instrumentCost")
     private double cost;
-    @Column(name = "fixedOnDate")
-    private String fixedDate;
+    @Column(name = "dateSubmitted")
+    private String dateAdded;
     @Column(name = "isCompleted")
     private boolean completed;
 
