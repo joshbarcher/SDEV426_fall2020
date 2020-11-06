@@ -38,6 +38,7 @@ public class RepairController
     @PostMapping("add")
     public String handleAddForm(@ModelAttribute Repair repair)
     {
-        return "add_repair";
+        service.addNewRepair(repair);
+        return "redirect:/repair/all";
     }
 }

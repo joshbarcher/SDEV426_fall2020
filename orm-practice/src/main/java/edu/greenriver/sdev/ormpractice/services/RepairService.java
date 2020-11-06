@@ -32,4 +32,16 @@ public class RepairService
             return repairs;
         }
     }
+
+    public void addNewRepair(Repair repair)
+    {
+        if (repair.getRepairId() == 0)
+        {
+            repo.save(repair);
+        }
+        else
+        {
+            throw new IllegalStateException("This is a method for insertions, not updates");
+        }
+    }
 }
