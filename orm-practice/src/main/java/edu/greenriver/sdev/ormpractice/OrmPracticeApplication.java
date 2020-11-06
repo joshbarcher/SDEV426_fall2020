@@ -1,6 +1,7 @@
 package edu.greenriver.sdev.ormpractice;
 
 import edu.greenriver.sdev.ormpractice.entities.Repair;
+import edu.greenriver.sdev.ormpractice.entities.Technician;
 import edu.greenriver.sdev.ormpractice.repositories.IRepairRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,6 +37,7 @@ public class OrmPracticeApplication
 
         Repair repair = Repair.builder()
                 .instrument("trombone")
+                .completed(false)
                 .build();
 
         List<Repair> repairs = List.of(fluteRepair, clarinetRepair, repair);
@@ -46,5 +48,12 @@ public class OrmPracticeApplication
         //to update, we change the object and save it!
         fluteRepair.setCompleted(false);
         repo.save(fluteRepair);
+
+        Technician tech = Technician.builder()
+            .name("Susie")
+            .build();
+
+        clarinetRepair.setTechnician(tech);
+        repo.save(clarinetRepair);
     }
 }

@@ -35,7 +35,7 @@ public class RepairService
 
     public void addNewRepair(Repair repair)
     {
-        if (repair.getRepairId() == 0)
+        if (repair.getRepairId() == null)
         {
             repo.save(repair);
         }
@@ -43,5 +43,15 @@ public class RepairService
         {
             throw new IllegalStateException("This is a method for insertions, not updates");
         }
+    }
+
+    public List<Repair> getCompleted()
+    {
+        return repo.findAllByCompleted(true);
+    }
+
+    public Repair getById(int id)
+    {
+        return repo.findByRepairId(id).orElse(new Repair());
     }
 }

@@ -17,7 +17,7 @@ public class Repair
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int repairId;
+    private Integer repairId;
 
     @Column(name = "instrumentName")
     private String instrument;
@@ -30,6 +30,10 @@ public class Repair
 
     @Transient
     private boolean partsInStock;
+
+    @OneToOne
+    @JoinColumn(name = "techId")
+    private Technician technician;
 }
 
 

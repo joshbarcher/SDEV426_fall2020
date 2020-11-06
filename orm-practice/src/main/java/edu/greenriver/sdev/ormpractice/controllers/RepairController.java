@@ -24,7 +24,7 @@ public class RepairController
     @GetMapping("all")
     public String allRepairs(Model model)
     {
-        model.addAttribute("repairs", service.getAllRepairs());
+        model.addAttribute("repairs", service.getCompleted());
         return "all_repairs";
     }
 
