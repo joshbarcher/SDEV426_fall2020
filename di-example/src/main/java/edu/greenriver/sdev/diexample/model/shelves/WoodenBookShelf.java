@@ -1,9 +1,12 @@
 package edu.greenriver.sdev.diexample.model.shelves;
 
 import edu.greenriver.sdev.diexample.model.books.Book;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Qualifier("wooden")
 public class WoodenBookShelf implements IBookShelf
 {
     public WoodenBookShelf()

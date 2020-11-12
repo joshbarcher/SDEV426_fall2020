@@ -1,6 +1,7 @@
 package edu.greenriver.sdev.diexample.model.books;
 
 import edu.greenriver.sdev.diexample.model.shelves.IBookShelf;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -8,7 +9,7 @@ public class BookCollection
 {
     private IBookShelf shelf;
 
-    public BookCollection(IBookShelf shelf)
+    public BookCollection(@Qualifier("wooden") IBookShelf shelf)
     {
         this.shelf = shelf;
     }
