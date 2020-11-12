@@ -35,7 +35,7 @@ public class RepairService
 
     public void addNewRepair(Repair repair)
     {
-        if (repair.getRepairId() == null)
+        if (repair.getRepairId() == 0)
         {
             repo.save(repair);
         }

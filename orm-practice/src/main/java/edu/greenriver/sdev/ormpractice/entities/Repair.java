@@ -1,9 +1,6 @@
 package edu.greenriver.sdev.ormpractice.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -17,7 +14,7 @@ public class Repair
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer repairId;
+    private int repairId;
 
     @Column(name = "instrumentName")
     private String instrument;
@@ -31,7 +28,8 @@ public class Repair
     @Transient
     private boolean partsInStock;
 
-    @OneToOne
+    @ToString.Exclude /* don't include this field with the lombok toString() */
+    @ManyToOne
     @JoinColumn(name = "techId")
     private Technician technician;
 }
