@@ -1,6 +1,6 @@
 package pattern;
 
-public interface IObserver
+public interface IObserver<T>
 {
-    void update(Object observable, Object... arguments);
+    void update(T observable, Object... arguments);
 }

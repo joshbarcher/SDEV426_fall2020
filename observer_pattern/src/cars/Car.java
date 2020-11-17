@@ -23,21 +23,21 @@ public class Car extends Observable
 
     public void start()
     {
-        System.out.printf("You start a %s%n", makeAndModel());
-        updateObservers();
+        //System.out.printf("You start a %s%n", makeAndModel());
+        updateObservers(CarState.STARTED);
     }
 
     public void stop()
     {
-        System.out.printf("You stop a %s%n", makeAndModel());
-        updateObservers();
+        //System.out.printf("You stop a %s%n", makeAndModel());
+        updateObservers(CarState.STOPPED);
     }
 
     public void drive(String somewhere)
     {
         location = somewhere;
-        System.out.printf("You drive the %s to %s.%n", makeAndModel(), somewhere);
-        updateObservers();
+        //System.out.printf("You drive the %s to %s.%n", makeAndModel(), somewhere);
+        updateObservers(CarState.DRIVING);
     }
 
     public String getMake()
@@ -53,5 +53,12 @@ public class Car extends Observable
     public String getLocation()
     {
         return location;
+    }
+
+    public enum CarState
+    {
+        STOPPED,
+        STARTED,
+        DRIVING
     }
 }
