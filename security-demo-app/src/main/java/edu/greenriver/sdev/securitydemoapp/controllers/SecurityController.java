@@ -11,4 +11,16 @@ public class SecurityController
     {
         return "home";
     }
+
+    @GetMapping("/userpages/index")
+    public String userPage()
+    {
+        return "user_page";
+    }
+
+    @GetMapping("/adminpages/index")
+    public String adminPage()
+    {
+        return "admin_page";
+    }
 }
