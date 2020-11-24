@@ -1,5 +1,6 @@
 package edu.greenriver.sdev.securitydemoapp.config;
 
+import edu.greenriver.sdev.securitydemoapp.services.UserAccountService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,6 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+    private UserAccountService service;
+
+    //inject the user service I need
+    public SecurityConfig(UserAccountService service)
+    {
+        this.service = service;
+    }
+
     //we need to provide a hashing mechanism for passwords
     @Bean
     public BCryptPasswordEncoder encoder()
@@ -26,10 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     {
         BCryptPasswordEncoder encoder = encoder();
 
-        auth.inMemoryAuthentication()
+        auth.userDetailsService(service).passwordEncoder(encoder);
+
+        /*auth.inMemoryAuthentication()
             .withUser("admin_user").password(encoder.encode("pass123")).roles("USER", "ADMIN")
             .and()
-            .withUser("regular_user").password(encoder.encode("pass123")).roles("USER");
+            .withUser("regular_user").password(encoder.encode("pass123")).roles("USER");*/
     }
 
     //choosing which directories to look down (or not)
